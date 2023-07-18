@@ -1,0 +1,30 @@
+.Contact {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 2px solid #A78295;
+    margin: 4px 0;
+    justify-content: space-between;
+    align-items: center;
+}
+.Details {
+    display: flex;
+    flex-direction: column;
+}
+.Name {
+    color: #331D2C;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 4px 0 ;
+}
+.Number {
+    color: #331D2C;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 0 ;
+
+}
+.ButtonHolder {
+    display: flex;
+    flex-direction: row;
+}

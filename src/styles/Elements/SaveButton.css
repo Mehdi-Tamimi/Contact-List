@@ -1,0 +1,12 @@
+
+
+.SaveButton {
+    padding: 8px 0;
+    margin-top: 20px;
+    background-color: #331D2C;
+    color: #FFFFFF;
+    font-size: 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

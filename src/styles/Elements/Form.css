@@ -1,0 +1,15 @@
+.FormHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #A78295;
+    padding: 8px;
+    border-radius: 16px;
+}
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 0;
+    
+}

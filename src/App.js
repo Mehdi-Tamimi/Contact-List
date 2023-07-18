@@ -1,23 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Home } from './components/Home/Home';
+import { AddContact } from './components/AddContact/AddContact';
+import { ContactDetails } from './components/Contact Details/ContactDetails';
+import { EditContat } from './components/Edit Contact/EditContact';
+import { Background } from './components/Home/Elements/BackGround';
+import './styles/App/App.css'
+import { useEffect,useState } from 'react';
 
 function App() {
+  const [contacts,setContacts] = useState([])
+  const [isLoading,setIsLoading] = useState(false)
+  const getData = async () => {
+      const dataAPI = 'http://localhost:3000/contacts'
+  
+      try {
+          setIsLoading(true)
+          const rawData = await fetch(dataAPI)
+          const data = await rawData.json()
+          setContacts(data)
+          setIsLoading(false)
+      }
+      catch (e) {
+          console.log(e)
+      }
+  
+  }
+  useEffect(() => {
+      getData()
+  },[])
+  if (isLoading) {
+    return <div className='Loading'>Loading...</div>
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+        <BrowserRouter>
+            <Home contacts={contacts} getData={getData}/>
+            
+            <div className='Content'>
+              <Routes>
+                  <Route path='/' element={<Background/>}/>
+                  <Route path='/add-contact' element={<AddContact getData={getData}/>}/>
+                  <Route path='/:id' element={<ContactDetails/>}/>
+                  <Route path='/edit/:id' element={<EditContat getData={getData}/>}/>
+              </Routes>
+            </div>
+        </BrowserRouter>
+
     </div>
   );
 }
